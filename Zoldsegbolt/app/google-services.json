@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "358384982669",
+    "project_id": "beadando-5dd66",
+    "storage_bucket": "beadando-5dd66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358384982669:android:c43b73c1bb4603ccf060c4",
+        "android_client_info": {
+          "package_name": "hu.mobil_alk.zoldsegbolt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358384982669-socsvmvd43ffmf764656hoa7kfh7ghii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.mobil_alk.zoldsegbolt",
+            "certificate_hash": "726af7c4f7c66c828e69d5dbafbd37875b6f91a2"
+          }
+        },
+        {
+          "client_id": "358384982669-2sotfab8fnh6f268ph65sdus4q1fkqus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvOqDLy8NnVcrg9s7AXBlCBuQTcziAddY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358384982669-2sotfab8fnh6f268ph65sdus4q1fkqus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
