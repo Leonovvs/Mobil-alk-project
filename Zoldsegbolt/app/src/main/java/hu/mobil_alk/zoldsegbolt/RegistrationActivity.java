@@ -153,7 +153,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void goto_vasarlas(){
-        Toast.makeText(this, "Sikeres regisztracio", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Sikeres regisztracio", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, VasarlasActivity.class);
         intent.putExtra("SECRET_KEY", SECRET_KEY);

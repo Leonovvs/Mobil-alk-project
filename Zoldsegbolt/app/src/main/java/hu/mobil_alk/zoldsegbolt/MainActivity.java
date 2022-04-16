@@ -55,16 +55,6 @@ public class MainActivity extends AppCompatActivity{
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-
-        if (isNetwork(getApplicationContext())){
-
-            Toast.makeText(getApplicationContext(), "Internet Connected", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(getApplicationContext(), "Internet Is Not Connected", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
 
