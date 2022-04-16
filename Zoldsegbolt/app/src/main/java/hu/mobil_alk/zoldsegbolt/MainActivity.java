@@ -1,8 +1,11 @@
 package hu.mobil_alk.zoldsegbolt;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity{
     private SharedPreferences preferences;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private JobScheduler mJobScheduler;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,8 @@ public class MainActivity extends AppCompatActivity{
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        mJobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        setJobScheduler();
     }
 
 
@@ -165,6 +172,18 @@ public class MainActivity extends AppCompatActivity{
         Log.i(LOG_TAG, "onPause");
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setJobScheduler() {
+        int hardDeadline = 5000;
+
+        ComponentName name = new ComponentName(getPackageName(), NotificationJobService.class.getName());
+        JobInfo.Builder builder = new JobInfo.Builder(0, name).setOverrideDeadline(hardDeadline);
+
+        mJobScheduler.schedule(builder.build());
+        //cancel
+//        mJobScheduler.cancel(0);
+    }
 
 
 }
