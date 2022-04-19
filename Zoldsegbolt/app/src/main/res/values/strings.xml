@@ -1,3 +1,161 @@
 <resources>
     <string name="app_name">Zoldsegbolt</string>
+
+
+
+
+
+
+    <string-array name="aru_nevek">
+        <item>Alma</item>
+        <item>Avocado</item>
+        <item>Banán</item>
+        <item>Citrom</item>
+        <item>Cseresznye</item>
+        <item>Eper</item>
+        <item>Görögdinnye</item>
+        <item>Gránátalma</item>
+        <item>Grapefruit</item>
+        <item>Kivi</item>
+        <item>Körte</item>
+        <item>Licsi</item>
+        <item>Málna</item>
+        <item>Mandarin</item>
+        <item>Mangó</item>
+        <item>Ananász</item>
+        <item>Narancs</item>
+        <item>Őszibarack</item>
+        <item>Parasicsom</item>
+        <item>Sárgadinnye</item>
+        <item>Sárgabarack</item>
+        <item>Szilva</item>
+        <item>Szőlő</item>
+
+
+        <item>Borsó</item>
+        <item>Brokkoli</item>
+        <item>Cukkini</item>
+        <item>Erős Paprika</item>
+        <item>Fehér Bab</item>
+        <item>Fokhagyma</item>
+        <item>Vöröshagyma</item>
+        <item>Káposzta</item>
+        <item>Karfiol</item>
+        <item>Kígyóuborka</item>
+        <item>Krumpli</item>
+        <item>Lilahagyma</item>
+        <item>Padliztyán</item>
+        <item>Petrezselyem</item>
+        <item>Pritamin Paprika</item>
+        <item>Répa</item>
+        <item>Retek</item>
+        <item>Jégsaláta</item>
+        <item>TV Paprika</item>
+        <item>Vörösbab</item>
+        <item>Zeller</item>
+        <item>Zöldbab</item>
+        <item>Zöldhagyma</item>
+    </string-array>
+
+
+    <string-array name="aru_arak">
+        <item>459 Ft/Kg</item>
+        <item>499 Ft/Db</item>
+        <item>500 Ft/Kg</item>
+        <item>899 Ft/Kg</item>
+        <item>950 Ft/Kg</item>
+        <item>1799 Ft/Kg</item>
+        <item>899 Ft/Kg</item>
+        <item>699 Ft/Kg</item>
+        <item>599 Ft/Kg</item>
+        <item>1079 Ft/Kg</item>
+        <item>799 Ft/Kg</item>
+        <item>6799 Ft/Kg</item>
+        <item>6395 Ft/Kg</item>
+        <item>599 Ft/Kg</item>
+        <item>599 Ft/Db</item>
+        <item>799 Ft/Kg</item>
+        <item>429 Ft/Kg</item>
+        <item>630 Ft/Kg</item>
+        <item>1100 FT/Kg</item>
+        <item>910 Ft/Kg</item>
+        <item>700 Ft/Kg</item>
+        <item>350 Ft/Kg</item>
+        <item>1998 Ft/Kg</item>
+
+        <item>1500 Ft/Kg</item>
+        <item>1198 Ft/Kg</item>
+        <item>1499 Ft/Kg</item>
+        <item>1599 Ft/Kg</item>
+        <item>1531 Ft/Kg</item>
+        <item>1999 Ft/Kg</item>
+        <item>299 Ft/Kg</item>
+        <item>279 Ft/Kg</item>
+        <item>799 Ft/Kg</item>
+        <item>399 Ft/Db</item>
+        <item>399 Ft/Kg</item>
+        <item>399 Ft/Kg</item>
+        <item>899 Ft/Kg</item>
+        <item>279 Ft/Csomag</item>
+        <item>1699 Ft/Kg</item>
+        <item>289 Ft/Kg</item>
+        <item>299 Ft/Db</item>
+        <item>649 Ft/Db</item>
+        <item>1189 Ft/Kg</item>
+        <item>1940 Ft/Kg</item>
+        <item>499 Ft/Kg</item>
+        <item>900 Ft/Kg</item>
+        <item>349 Ft/Db</item>
+    </string-array>
+    
+    
+    <string-array name="aru_kepek">
+        <item>@drawable/alma</item>
+        <item>@drawable/avocado</item>
+        <item>@drawable/banan</item>
+        <item>@drawable/citrom</item>
+        <item>@drawable/cseresznye</item>
+        <item>@drawable/eper</item>
+        <item>@drawable/gorog_dinnye</item>
+        <item>@drawable/granatalma</item>
+        <item>@drawable/grapefruit</item>
+        <item>@drawable/kivi</item>
+        <item>@drawable/korte</item>
+        <item>@drawable/licsi</item>
+        <item>@drawable/malna</item>
+        <item>@drawable/mandarin</item>
+        <item>@drawable/mango</item>
+        <item>@drawable/nananasz</item>
+        <item>@drawable/narancs</item>
+        <item>@drawable/oszibarack</item>
+        <item>@drawable/paradicsom</item>
+        <item>@drawable/sarga_dinnye</item>
+        <item>@drawable/sargabarack</item>
+        <item>@drawable/szilva</item>
+        <item>@drawable/szolo</item>
+
+        <item>@drawable/borso</item>
+        <item>@drawable/brokkoli</item>
+        <item>@drawable/cukkini</item>
+        <item>@drawable/eros_paprika</item>
+        <item>@drawable/feher_bab</item>
+        <item>@drawable/fokhagyma</item>
+        <item>@drawable/hagyma</item>
+        <item>@drawable/kaposzta</item>
+        <item>@drawable/karfiol</item>
+        <item>@drawable/kigyo_uborka</item>
+        <item>@drawable/krumpli</item>
+        <item>@drawable/lila_hagyma</item>
+        <item>@drawable/padlizsan</item>
+        <item>@drawable/petrezselyem</item>
+        <item>@drawable/pritamin_paprika</item>
+        <item>@drawable/repa</item>
+        <item>@drawable/retek</item>
+        <item>@drawable/salata</item>
+        <item>@drawable/tv_paprika</item>
+        <item>@drawable/voros_bab</item>
+        <item>@drawable/zeller</item>
+        <item>@drawable/zold_bab</item>
+        <item>@drawable/zold_hagyma</item>
+    </string-array>
 </resources>
