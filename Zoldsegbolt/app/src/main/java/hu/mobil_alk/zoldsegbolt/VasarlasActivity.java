@@ -1,9 +1,13 @@
 package hu.mobil_alk.zoldsegbolt;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -11,7 +15,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +42,11 @@ public class VasarlasActivity extends AppCompatActivity {
     private ArrayList<Aru> mAruList;
     private AruAdapter mAdapter;
 
+    private FrameLayout redCircle;
+    private TextView contentTextView;
+
     private int gridNumber = 1;
+    private int cartNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,14 +89,14 @@ public class VasarlasActivity extends AppCompatActivity {
 
     private void initializeData() {
         String[] arukList = getResources().getStringArray(R.array.aru_nevek);
-        String arukInfo = "Mindig friss és egészséges";
+        String[] arukInfo = getResources().getStringArray(R.array.aru_info);
         String[] arukPrice = getResources().getStringArray(R.array.aru_arak);
         TypedArray arukImageResource = getResources().obtainTypedArray(R.array.aru_kepek);
 
         mAruList.clear();
 
         for (int i = 0; i < arukList.length; i++){
-            mAruList.add(new Aru(arukList[i], arukPrice[i], arukInfo, arukImageResource.getResourceId(i, 0)));
+            mAruList.add(new Aru(arukList[i], arukPrice[i], arukInfo[i], arukImageResource.getResourceId(i, 0)));
         }
 
         arukImageResource.recycle();
@@ -115,7 +128,74 @@ public class VasarlasActivity extends AppCompatActivity {
         }
     }
 
-//    public static Drawable LoadImageFromWebOperations(String url) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.vasarlas_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_bar);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.log_out_button:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                return true;
+            case R.id.cart:
+                // TODO new activyti kosár nézet, vásárlás befejezése
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    @SuppressLint("RestrictedApi")
+    @Override
+    protected boolean onPrepareOptionsPanel(@Nullable View view, @NonNull Menu menu) {
+        final MenuItem alertMenuItem = menu.findItem(R.id.cart);
+        FrameLayout rootView = (FrameLayout) alertMenuItem.getActionView();
+
+        redCircle = (FrameLayout) rootView.findViewById(R.id.view_alert_red_circle);
+        contentTextView = (TextView) rootView.findViewById(R.id.view_alert_count_textview);
+
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onOptionsItemSelected(alertMenuItem);
+            }
+        });
+
+        return super.onPrepareOptionsPanel(view, menu);
+    }
+
+    public void updateCartIcon(){
+        cartNumber++;
+        if (cartNumber > 0){
+            contentTextView.setText(String.valueOf(cartNumber));
+        }else {
+            contentTextView.setText(String.valueOf(""));
+        }
+    }
+
+    //    public static Drawable LoadImageFromWebOperations(String url) {
 //        try {
 //            InputStream is = (InputStream) new URL(url).getContent();
 //            Drawable d = Drawable.createFromStream(is, "src name");

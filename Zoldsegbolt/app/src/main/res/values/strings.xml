@@ -58,6 +58,58 @@
     </string-array>
 
 
+    <string-array name="aru_info">
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+        <item>Gyümölcs</item>
+
+
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+        <item>Zöldség</item>
+    </string-array>
+
+
     <string-array name="aru_arak">
         <item>459 Ft/Kg</item>
         <item>499 Ft/Db</item>

@@ -63,6 +63,8 @@ public class AruAdapter extends RecyclerView.Adapter<AruAdapter.ViewHolder> impl
         return aruFilter;
     }
 
+
+
     private Filter aruFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
@@ -76,7 +78,7 @@ public class AruAdapter extends RecyclerView.Adapter<AruAdapter.ViewHolder> impl
                 String filterPatten = charSequence.toString().toLowerCase().trim();
 
                 for (Aru aru : mAruItemsDataAll){
-                    if (aru.getName().toLowerCase().contains(filterPatten)){
+                    if (aru.getName().toLowerCase().contains(filterPatten) || aru.getInfo().toLowerCase().contains(filterPatten)){
                         filteredList.add(aru);
                     }
                 }
@@ -113,6 +115,7 @@ public class AruAdapter extends RecyclerView.Adapter<AruAdapter.ViewHolder> impl
                 @Override
                 public void onClick(View view) {
                     Log.d("Activity", "Add cart button clicked");
+                    ((VasarlasActivity)mContext).updateCartIcon();
                 }
             });
         }
