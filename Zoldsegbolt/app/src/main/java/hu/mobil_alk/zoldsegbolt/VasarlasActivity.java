@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,16 +25,18 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class VasarlasActivity extends AppCompatActivity {
     private static final String LOG_TAG = VasarlasActivity.class.getName();
+    private static final int SECRET_KEY = 99;
+    private static final int LAUNCH_SECOND_ACTIVITY = 1;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
 
@@ -45,6 +47,9 @@ public class VasarlasActivity extends AppCompatActivity {
     private FrameLayout redCircle;
     private TextView contentTextView;
 
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mItems;
+
     private int gridNumber = 1;
     private int cartNumber = 0;
 
@@ -52,22 +57,29 @@ public class VasarlasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vasarlas);
+
+        int secret_key = getIntent().getIntExtra("SECRET_KEY", 0);
+
+        if (secret_key == 1) {
+            finish();
+        }
+
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
 
         TelephonyManager manager = (TelephonyManager)getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
         if (Objects.requireNonNull(manager).getPhoneType() == TelephonyManager.PHONE_TYPE_NONE) {
-            Toast.makeText(this, "Detected... You're using a Tablet", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Detected... You're using a Tablet", Toast.LENGTH_SHORT).show();
             gridNumber = 3;
         } else {
-            Toast.makeText(this, "Detected... You're using a Mobile Phone", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Detected... You're using a Mobile Phone", Toast.LENGTH_SHORT).show();
             gridNumber = 1;
         }
 
 
 
-        int secret_key = getIntent().getIntExtra("SECRET_KEY", 0);
+
 
         if (secret_key != 99 || user == null) {
             finish();
@@ -81,9 +93,14 @@ public class VasarlasActivity extends AppCompatActivity {
         mAdapter = new AruAdapter(this, mAruList);
         mRecyclerView.setAdapter(mAdapter);
 
+        mFirestore = FirebaseFirestore.getInstance();
+        mItems = mFirestore.collection("Aruk");
+
         initializeData();
 
-
+        if (user == null){
+            finish();
+        }
 
     }
 
@@ -151,12 +168,30 @@ public class VasarlasActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+    private void gotoBeallitasok(){
+        Intent i = new Intent(this, BeallitasokActivity.class);
+        startActivity(i);
+    }
+
+    private void gotoHibajelentes(){
+        Intent intent = new Intent(this, HibajelentesActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.log_out_button:
                 FirebaseAuth.getInstance().signOut();
                 finish();
+                return true;
+            case R.id.settings_button:
+                gotoBeallitasok();
+                return true;
+            case R.id.hibas_termek_button:
+                gotoHibajelentes();
                 return true;
             case R.id.cart:
                 // TODO new activyti kosár nézet, vásárlás befejezése
@@ -187,12 +222,14 @@ public class VasarlasActivity extends AppCompatActivity {
     }
 
     public void updateCartIcon(){
-        cartNumber++;
+        cartNumber = (cartNumber + 1);
         if (cartNumber > 0){
             contentTextView.setText(String.valueOf(cartNumber));
         }else {
             contentTextView.setText(String.valueOf(""));
         }
+
+        redCircle.setVisibility((cartNumber > 0) ? View.VISIBLE : View.GONE);
     }
 
     //    public static Drawable LoadImageFromWebOperations(String url) {

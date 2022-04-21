@@ -22,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class RegistrationActivity extends AppCompatActivity {
     private static final String LOG_TAG = RegistrationActivity.class.getName();
     private static final String PREF_KEY = RegistrationActivity.class.getPackage().toString();
@@ -135,9 +137,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
         User user = new User(felhasznalonev,vezeteknev, keresztnev, email, jelszo, jelszoUjra, telefonszam, szallitasiCim);
 
-        dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        dbUsers.document(Objects.requireNonNull(mAuth.getCurrentUser()).getUid().toString()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onSuccess(DocumentReference documentReference) {
+            public void onSuccess(Void unused) {
                 Toast.makeText(RegistrationActivity.this, "new User adatok feltöltve", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -146,6 +148,17 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(RegistrationActivity.this, "new User adatok sikertelen feltöltés", Toast.LENGTH_SHORT).show();
             }
         });
+//        dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//            @Override
+//            public void onSuccess(DocumentReference documentReference) {
+//                Toast.makeText(RegistrationActivity.this, "new User adatok feltöltve", Toast.LENGTH_SHORT).show();
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(RegistrationActivity.this, "new User adatok sikertelen feltöltés", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public void cancel(View view) {

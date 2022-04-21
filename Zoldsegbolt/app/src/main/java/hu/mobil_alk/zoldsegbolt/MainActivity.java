@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity{
     private static final String LOG_TAG = MainActivity.class.getName();
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
     private SharedPreferences preferences;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
     private GoogleSignInClient mGoogleSignInClient;
     private JobScheduler mJobScheduler;
 
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity{
 
         preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity{
             if (task.isSuccessful()) {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(LOG_TAG, "signInWithCredential:success");
-                goto_vasarlas();
+                gotoVasarlas();
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(LOG_TAG, "signInWithCredential:failure", task.getException());
@@ -111,7 +114,8 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-    private void goto_vasarlas(){
+
+    private void gotoVasarlas(){
         //Toast.makeText(this, "Sikeres bejelentkezes", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, VasarlasActivity.class);
@@ -146,7 +150,7 @@ public class MainActivity extends AppCompatActivity{
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if(task.isSuccessful()){
                 Log.d(LOG_TAG, "User loged in successfully");
-                goto_vasarlas();
+                gotoVasarlas();
             } else {
                 Log.d(LOG_TAG, "User log in fail");
                 Toast.makeText(MainActivity.this, "User log in fail: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();

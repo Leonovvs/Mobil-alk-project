@@ -2,10 +2,6 @@
     <string name="app_name">Zoldsegbolt</string>
 
 
-
-
-
-
     <string-array name="aru_nevek">
         <item>Alma</item>
         <item>Avocado</item>
@@ -159,8 +155,8 @@
         <item>900 Ft/Kg</item>
         <item>349 Ft/Db</item>
     </string-array>
-    
-    
+
+
     <string-array name="aru_kepek">
         <item>@drawable/alma</item>
         <item>@drawable/avocado</item>

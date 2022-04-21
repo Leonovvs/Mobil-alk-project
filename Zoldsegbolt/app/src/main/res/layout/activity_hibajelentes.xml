@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HibajelentesActivity">
+
+    <ImageView
+        android:id="@+id/kep"
+        android:layout_width="345dp"
+        android:layout_height="236dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/camera_icon" />
+
+    <TextView
+        android:id="@+id/leiras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Kérem jól láthatóan fényképezze le a sérülést"
+        android:layout_below="@+id/kep"
+        />
+
+    <Button
+        android:id="@+id/takePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fényképez"
+        android:onClick="openCamera"
+        android:layout_below="@+id/leiras"
+        android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:id="@+id/kuldes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Küldés"
+        android:onClick="kuldes"
+        android:layout_below="@+id/takePicture"
+        android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:id="@+id/megse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mégse"
+        android:onClick="cancel"
+        android:layout_below="@+id/kuldes"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

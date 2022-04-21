@@ -82,8 +82,8 @@ public class AruAdapter extends RecyclerView.Adapter<AruAdapter.ViewHolder> impl
                         filteredList.add(aru);
                     }
                 }
-                results.count = mAruItemsDataAll.size();
-                results.values = mAruItemsDataAll;
+                results.count = filteredList.size();
+                results.values = filteredList;
             }
 
             return results;
