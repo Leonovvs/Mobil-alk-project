@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BeallitasokActivity">
+
+
+
+    <TextView
+        android:id="@+id/beallitasok_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="-3dp"
+        android:text="Beállítások"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/beallitasok_text"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/b_szerkesztes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adatok szerkesztése"
+                android:textAlignment="center"
+                android:textSize="18dp" />
+
+
+            <EditText
+                android:id="@+id/b_userNameEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b_szerkesztes"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="Felhasználónév"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/b_userVezetekNevEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b_userNameEditText"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="Vezetéknév"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/b_userKeresztNevEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b_userVezetekNevEditText"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="Keresztnév"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/b_userEmailEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/b_userKeresztNevEditText"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="10dp"
+                android:editable="false"
+                android:enabled="false"
+                android:ems="10"
+                android:hint="E-mail"
+                android:inputType="none"
+                tools:ignore="Deprecated" />
+
+
+
+            <EditText
+                android:id="@+id/b_phoneEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/b_userEmailEditText"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="Telefonszám"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/b_addressEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/b_phoneEditText"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="Szállítási cím"
+                android:inputType="textMultiLine|textPostalAddress"
+                android:maxLines="3" />
+
+            <LinearLayout
+                android:id="@+id/b_gombok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/b_addressEditText"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mentés"
+                    android:onClick="save"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Mégse"
+                    android:onClick="cancel"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/b_torles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b_gombok"
+                android:layout_marginTop="20dp"
+                android:text="Fiók törlése"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/b_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A fiókod és minden hozzátartozó adatod törlése"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:layout_below="@+id/b_torles"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b_info"
+                android:layout_centerInParent="true"
+                android:background="@color/red"
+                android:onClick="delete"
+                android:padding="10dp"
+                android:text="Fiók törlése"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
