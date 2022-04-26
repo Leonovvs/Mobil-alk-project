@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -196,6 +199,10 @@ public class BeallitasokActivity extends AppCompatActivity {
 
 
     public void delete(View view) {
+        Button b = (Button)findViewById(R.id.b_torol_button);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        b.startAnimation(animation);
+
         DocumentReference documentReference = mFirestore.collection("Users").document(uid);
         documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -205,8 +212,9 @@ public class BeallitasokActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            gotoMain();
                             Toast.makeText(BeallitasokActivity.this, "Törölve", Toast.LENGTH_SHORT).show();
+                            b.clearAnimation();
+                            gotoMain();
                         }
                     }
                 });

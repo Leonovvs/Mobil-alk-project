@@ -15,6 +15,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -124,17 +127,28 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void loginWithGoogle(View view) {
+        Button b = (Button)findViewById(R.id.main_login_with_google_button);
+        Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate);
+        b.startAnimation(animation);
+
         if (isNetwork(getApplicationContext())){
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
             startActivityForResult(signInIntent, RC_SIGN_IN);
+            b.clearAnimation();
         }else {
             Toast.makeText(this, "Internet kapcsolat szükséges!", Toast.LENGTH_SHORT).show();
+            b.clearAnimation();
         }
     }
 
     public void login(View view) {
+        Button b = (Button)findViewById(R.id.main_login_button);
+        Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate);
+        b.startAnimation(animation);
+
         if (!isNetwork(getApplicationContext())){
             Toast.makeText(this, "Internet kapcsolat szükséges!", Toast.LENGTH_SHORT).show();
+            b.clearAnimation();
             return;
         }
 
@@ -143,6 +157,7 @@ public class MainActivity extends AppCompatActivity{
 
         if (email.equals("") || password.equals("")){
             Toast.makeText(this, "Minden mező kitöltése kötelező", Toast.LENGTH_LONG).show();
+            b.clearAnimation();
             return;
         }
         // Log.i(LOG_TAG, "Bejelentkezett: " + userName + ", jelszó: " + password);
@@ -150,18 +165,26 @@ public class MainActivity extends AppCompatActivity{
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if(task.isSuccessful()){
                 Log.d(LOG_TAG, "User loged in successfully");
+                b.clearAnimation();
                 gotoVasarlas();
             } else {
                 Log.d(LOG_TAG, "User log in fail");
                 Toast.makeText(MainActivity.this, "User log in fail: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                b.clearAnimation();
             }
         });
     }
 
     public void register(View view) {
+        Button b = (Button)findViewById(R.id.main_regist_button);
+        Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate);
+        b.startAnimation(animation);
+
         Intent intent = new Intent(this, RegistrationActivity.class);
         intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
+
+        b.clearAnimation();
     }
 
     @Override
